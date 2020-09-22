@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Sub StockAnalysis()
     
     'Declare variables
