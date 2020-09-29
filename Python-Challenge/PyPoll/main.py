@@ -4,7 +4,6 @@ import csv
 
 # Create path to csv file
 election_csv = r"C:\Users\17179\Desktop\gitlab\uci-irv-data-pt-08-2020-u-c\02-Homework\03-Python\Instructions\PyPoll\Resources\election_data.csv"
-
 # Define variables, create lists and/or dicts
 total_votes = 0
 win_votes = 0
@@ -14,11 +13,11 @@ cand_percent = {}
 vote_list = []
 # Read in the csv file -------------------- pathing issue, get help
 with open(election_csv, 'r') as csvfile:
-    csvreader = csv.reader(csvfile, delimeter=',')
+    csvreader = csv.reader(csvfile, delimiter=',')
     header = next(csvreader)
 
 # Create for loops to loop through all data
-# Use the .keys , .items, and .get methods learned
+# Use the .keys , .items, and .get methods to get keys and values from dicts/lists
     for row in csvreader:
         # Calculate how many votes were cast 
         total_votes += 1
@@ -31,8 +30,7 @@ with open(election_csv, 'r') as csvfile:
     for x, votes in each_cand.items():
         cand_percent[x] = round((votes/total_votes)* 100, 2)
     # Loop through each 'key' in the key value pairs
-    # create if statement for if the highest value
-    #
+    # create if statement for if the highest value to determine winner
     for y in each_cand.keys():
         if each_cand[y] > win_votes:
             winner = y
@@ -50,7 +48,7 @@ print('------------------------------')
 print(f"Winner : {winner}")
 print("-------------------------------")
 
-election_output = os.path.join("..", "Resources", "analysis1.txt")
+election_output = os.path.join("analysis1.txt")
 
 with open(election_output, "w") as txtfile:
 
@@ -62,13 +60,3 @@ with open(election_output, "w") as txtfile:
         txtfile.write(f'\n{x} : {cand_percent[x]} % {votes}')
     txtfile.write(f'\n--------------------------------')
     txtfile.write(f'\nWinner : {winner}')
-
-# This is what output should print out, fix pathing issues with TA
-
-#   Election Results
-#   Total Votes: 3521001
-#   Khan: 63.000% (2218231)
-#   Correy: 20.000% (704200)
-#   Li: 14.000% (492940)
-#   O'Tooley: 3.000% (105630)
-#   Winner: Khan
