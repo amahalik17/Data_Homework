@@ -1,5 +1,5 @@
 After carefully analyzing the heroes of pymoli data, I conclude:
 
 1. Most of the players are male, 84%+
-2. There are more players betwwen the age 20 and 24 than any other age group. That is the target market.
+2. There are more players betwwen the ages 20 and 24 than any other age group. That is the target market.
 3. That same age group has the most purchases as well, being the largest source of revenue
