@@ -40,3 +40,26 @@ FROM "Employees"
 WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
 
 -- Analysis Question # 6
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+FROM "Employees" AS e
+JOIN "Dept_Emp" AS de
+ON de.emp_no = e.emp_no
+JOIN "Departments" AS d
+ON d.dept_no = de.dept_no
+WHERE d.dept_name = 'Sales';
+
+-- Analysis Question # 7
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+FROM "Employees" AS e
+JOIN "Dept_Emp" AS de
+ON de.emp_no = e.emp_no
+JOIN "Departments" AS d
+ON d.dept_no = de.dept_no
+WHERE d.dept_name = 'Sales' OR d.dept_name = 'Development';
+
+-- Analysis Question # 8
+SELECT last_name, COUNT(last_name)
+FROM "Employees"
+GROUP BY last_name
+ORDER BY COUNT(last_name) DESC;
+
