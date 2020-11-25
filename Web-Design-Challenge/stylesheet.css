@@ -1,0 +1,71 @@
+/* Navbar Styling */
+a.navbar-brand {
+    background-color: rgb(63, 201, 178);
+    font-size: 25px;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+/* Navbar Styling */
+ .nav-item.dropdown.show {
+    background-color: #ddd;
+}
+
+/* Paragraph Styling */
+p {
+    font-size: large;
+    padding:15px;
+}
+ 
+/* Body Background Styling */
+body {
+    background-color: rgb(136, 135, 135);
+}
+
+/* Header Styling */
+h3 {
+    color: rgb(72, 179, 161);
+    padding: 15px;
+}
+
+/* Navbar Styling */
+.navbar {
+    padding-right:30px;
+}
+
+/* Image Styling */
+.img-thumbnail {
+    padding:15px;
+}
+
+/* Visualization Styling */
+.col-md-12 {
+    background-color: #fff;
+    padding-top: 20px;
+    padding-bottom:40px;
+}
+
+/* Content Styling */
+.content {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+
+/* Content Styling */
+.content.bg-white {
+    margin-top: 15px;
+}
+
+/* Media Query */
+@media(max-width:700px) {
+    .navbar.bg-light {
+        background-color: rgb(67, 182, 163)!important;    
+     }
+    .navbar-collapse {
+        background-color: #fff;
+     }
+    .navbar{
+        padding:inherit;
+    }
+}
