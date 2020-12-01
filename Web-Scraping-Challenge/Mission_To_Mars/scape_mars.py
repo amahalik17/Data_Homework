@@ -51,6 +51,63 @@ def scrape_mars_image():
     html = browser.html
     soup = bs(html, 'html.parser')
 
+    # Retrieve img href
+    full_img = soup.find('div', class_='carousel_container')
+    picture = full_img.a['data-fancybox-href']
+
+    # Concatenate the base url with the href
+    url="https://www.jpl.nasa.gov/"
+    featured_image_url = url + picture
+
+    featured_image_url
+
+    mars_data['Image URL'] = featured_image_url
+
+    browser.quit()
+
+    return mars_data
+
+
+def scrape_mars_facts():
+    
+    # Initiate browser and visit url used to scrape mars facts
+    browser = init_browser()
+    facts_url = 'https://space-facts.com/mars/'
+    browser.visit(facts_url)
+    
+    # Create html object and parse with bs
+    html = browser.html
+    soup = bs(html, 'html.parser')
+
+    # Retrieve fact table using pandas
+    mars_table = pd.read_html(facts_url)
+    mars_facts = mars_table[0]
+
+    # Just changing the column names
+    mars_facts.columns=['Mars Info', 'Stats']
+    mars_facts
+
+    # Convert table/dataframe to a html table string using pandas
+    mars_facts_html = mars_facts.to_html(header=False)
+    mars_facts_html
+
+    mars_data['Table'] = mars_facts_html
+
+    browser.quit()
+
+    return mars_data
+
+def 
+
+
+
+
+
+
+
+
+    
+
 
 
 
