@@ -20,8 +20,8 @@ mars_data = {}
 def scrape_mars_news():
     # Initiate browser and visit url used to scrape news data
     browser = init_browser()
-    url = 'https://mars.nasa.gov/news/'
-    browser.visit(url)
+    news_url = 'https://mars.nasa.gov/news/'
+    browser.visit(news_url)
 
     # Create html object and parse with bs
     html = browser.html
@@ -56,8 +56,8 @@ def scrape_mars_image():
     picture = full_img.a['data-fancybox-href']
 
     # Concatenate the base url with the href
-    url="https://www.jpl.nasa.gov/"
-    featured_image_url = url + picture
+    base_url="https://www.jpl.nasa.gov/"
+    featured_image_url = base_url + picture
 
     featured_image_url
 
@@ -75,10 +75,6 @@ def scrape_mars_facts():
     facts_url = 'https://space-facts.com/mars/'
     browser.visit(facts_url)
     
-    # Create html object and parse with bs
-    html = browser.html
-    soup = bs(html, 'html.parser')
-
     # Retrieve fact table using pandas
     mars_table = pd.read_html(facts_url)
     mars_facts = mars_table[0]
@@ -97,20 +93,50 @@ def scrape_mars_facts():
 
     return mars_data
 
-def 
+def scrape_mars_hems():
 
-
-
-
-
-
-
-
+    # Initiate browser and visit url used to scrape mars facts
+    browser = init_browser()
+    hems_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
+    browser.visit(hems_url)
     
+    # Create html object and parse with bs
+    html = browser.html
+    soup = bs(html, 'html.parser')
 
+    all_hems = soup.find_all('div', class_='item')
+    hem_img_urls = []
 
+    # Create a base/main url to use in loop
+    base_url = 'https://astrogeology.usgs.gov'
 
+    # Iterate through the elements retrieved
+    for hem in all_hems:
+        
+        # Store the title
+        title = hem.find('h3').text
+        # Get the link that has the full-res image
+        img_url = hem.find('a', class_='itemLink')['href']
+        # Visit that link
+        browser.visit(base_url + img_url)
 
+        # Create an html object of the site that has individual hemisphere data
+        each_hem_html = browser.html
+        # Parse html using bs
+        soup = bs(each_hem_html, 'html.parser')
+
+        # Retrieve the full-res image source
+        hd_img_url = base_url + soup.find('img', class_='wide-image')['src']
+        # Append the titles and high-res image links as a dict to the empty list
+        hem_img_urls.append({'title': title, 'image url': hd_img_url})
+
+        
+        
+    mars_data['Hemisphere URLs'] = hem_img_urls
+        
+    browser.quit()
+
+    return mars_data
 
 
 
