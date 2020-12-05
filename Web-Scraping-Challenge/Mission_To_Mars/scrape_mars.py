@@ -22,13 +22,14 @@ def scrape_mars_news():
     browser = init_browser()
     news_url = 'https://mars.nasa.gov/news/'
     browser.visit(news_url)
+    time.sleep(3)
 
     # Create html object and parse with bs
     html = browser.html
     soup = bs(html, 'html.parser')
 
     # Retrieve the title and paragraph
-    news_title = soup.find('div', class_='content_title').text
+    news_title = soup.find_all('div', class_='content_title')[1].text
     news_p = soup.find('div', class_='article_teaser_body').text
 
     # Add to dictionary
@@ -61,7 +62,7 @@ def scrape_mars_image():
 
     featured_image_url
 
-    mars_data['Image URL'] = featured_image_url
+    mars_data['Image_URL'] = featured_image_url
 
     browser.quit()
 
@@ -128,15 +129,13 @@ def scrape_mars_hems():
         # Retrieve the full-res image source
         hd_img_url = base_url + soup.find('img', class_='wide-image')['src']
         # Append the titles and high-res image links as a dict to the empty list
-        hem_img_urls.append({'title': title, 'image url': hd_img_url})
+        hem_img_urls.append({'title': title, 'image_url': hd_img_url})
 
         
         
-    mars_data['Hemisphere URLs'] = hem_img_urls
+    mars_data['Hemisphere_URLs'] = hem_img_urls
         
     browser.quit()
 
     return mars_data
-
-
 
