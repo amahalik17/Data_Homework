@@ -55,6 +55,53 @@ d3.csv("assets/data/data.csv").then(function(smokerData) {
     .call(bottomAxis);
     // y axis(left)
     chartGroup.append("g").call(leftAxis);
-    
 
+    // Create circles for scatter plot
+    chartGroup.selectAll("circle")
+    .data(smokerData)
+    .enter()
+    .append("circle")
+    .attr("cx", d => xScale(d.age))
+    .attr("cy", d => yScale(d.smokes))
+    .attr("r", "10")
+    .attr("stroke-width", "1")
+    .attr("fill", "blue")
+    .attr("opacity", 0.80);
+
+    // Add labels and titles
+    chartGroup.append("text")
+    .attr("transform", `translate(${width / 2}, ${height + 20})`)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "12px")
+    .attr("fill", "black")
+    .style("font-weight", "bold")
+    .text("Average Age");
+
+    chartGroup.append("text")
+    .attr("y", 0 - (margin.left))
+    .attr("x", 0 - (height / 2))
+    .attr("text-anchor", "middle")
+    .attr("font-size", "12px")
+    .attr("fill", "black")
+    .style("font-weight", "bold")
+    .attr("transform", "rotate(-90)")
+    .text("Smokers (%)");
+
+    // Add text to each circle for state abbr
+    chartGroup.append("g")
+    .selectAll('text')
+    .data(smokerData)
+    .enter()
+    .append("text")
+    .text(d => d.abbr)
+    .attr("x", d => xScale(d.age))
+    .attr("y", d => yScale(d.smokes))
+    .classed(".stateText", true)
+    .attr("text-anchor", "middle")
+    .attr("fill", "white")
+    .attr("font-size", "12px")
+    .style("font-weight", "bold");
+}).catch(function(error) {
+    console.log(error);
 });
+  
