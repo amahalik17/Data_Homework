@@ -5,9 +5,9 @@ var svgHeight = 500;
 
 var margin = {
     top: 20,
-    right: 40,
+    right: 80,
     bottom: 60,
-    left: 50
+    left: 80
 };
 
 var width = svgWidth - margin.left - margin.right;
@@ -37,11 +37,11 @@ d3.csv("assets/data/data.csv").then(function(smokerData) {
 
     // Create Scales
     const xScale = d3.scaleLinear()
-    .domain(d3.extent(smokerData, d => d.age))
+    .domain([30, d3.max(smokerData, d => d.age)])
     .range([0, width]);
 
     const yScale = d3.scaleLinear()
-    .domain([0,d3.max(smokerData, d => d.smokes)])
+    .domain([5, d3.max(smokerData, d => d.smokes)])
     .range([height, 0]);
 
     // Create axes
@@ -64,24 +64,25 @@ d3.csv("assets/data/data.csv").then(function(smokerData) {
     .attr("cx", d => xScale(d.age))
     .attr("cy", d => yScale(d.smokes))
     .attr("r", "10")
-    .attr("stroke-width", "1")
+    .classed("stateCircle", true)
     .attr("fill", "blue")
-    .attr("opacity", 0.80);
+    .attr("opacity", 0.60);
 
     // Add labels and titles
     chartGroup.append("text")
-    .attr("transform", `translate(${width / 2}, ${height + 20})`)
+    .attr("transform", `translate(${width / 2}, ${height + margin.top + 20})`)
     .attr("text-anchor", "middle")
-    .attr("font-size", "12px")
+    .attr("font-size", "15px")
     .attr("fill", "black")
     .style("font-weight", "bold")
     .text("Average Age");
 
+    // axes labels and titles
     chartGroup.append("text")
-    .attr("y", 0 - (margin.left))
+    .attr("y", 0 - ((margin.left / 2) + 10))
     .attr("x", 0 - (height / 2))
     .attr("text-anchor", "middle")
-    .attr("font-size", "12px")
+    .attr("font-size", "15px")
     .attr("fill", "black")
     .style("font-weight", "bold")
     .attr("transform", "rotate(-90)")
@@ -100,7 +101,6 @@ d3.csv("assets/data/data.csv").then(function(smokerData) {
     .attr("text-anchor", "middle")
     .attr("fill", "white")
     .attr("font-size", "12px")
-    .style("font-weight", "bold");
 }).catch(function(error) {
     console.log(error);
 });
