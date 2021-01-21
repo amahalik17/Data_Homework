@@ -23,7 +23,7 @@ function createFeatures(earthquakeData) {
         // Create a circle marker for lat and long
         return new L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], {
             // Define markers, don't forget to create circle prop function later
-          radius: circleProperties(feature.properties.mag),
+          radius: circleSize(feature.properties.mag),
           fillOpacity: 0.8,
           // Don't forget to make circle color function
           color: circleColor(feature.properties.mag),
@@ -81,7 +81,7 @@ function createMap(earthquakes) {
 };
 
     // Create our map, giving it the streetmap and earthquakes layers to display on load
-    var myMap = L.map("mapid", {
+    var myMap = L.map("map", {
     center: [37.09, -95.71],
     zoom: 5,
     layers: [streetMap, earthquakes]
@@ -109,8 +109,7 @@ function createMap(earthquakes) {
     // iterate through labels list to define colors for markers
     for (var i = 0; i < labels.length; i++) {
         div.innerHTML += '<i style="background:' 
-        + circleColor(i) 
-        + '"></i> ' 
+        + circleColor(i) + '"></i> ' 
         + labels[i] 
         + '<br>';
     };
@@ -119,7 +118,7 @@ function createMap(earthquakes) {
 };
 
     // Add the info legend to the map
-    info.addTo(map);
+    info.addTo(myMap);
 
 };
 
@@ -128,10 +127,10 @@ function circleColor(magnitude) {
 
     // Conditionals for magnitude
     if (magnitude >= 5) {
-        return "red";
+        return "darkred";
     }
     else if (magnitude >= 4) {
-        return "peru";
+        return "red";
     }
     else if (magnitude >= 3) {
         return "darkorange";
@@ -151,5 +150,7 @@ function circleColor(magnitude) {
 function circleSize(magnitude) {
     return magnitude ** 2;
 };
+
+
 
 
