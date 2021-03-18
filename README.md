@@ -137,6 +137,22 @@
 •	Return JSONified query results from API endpoints.
 
 #
+### Javascript-Challenge
+  In this challenge, I write in JavaScript and use the D3.js library to display:
+  
+ • Use a provided dataset to form an array of JavaScript onjects
+ 
+ • Append a table to my webpage
+ 
+ • Add new rows of data
+ 
+ • DOM manipulation
+ 
+ • Write JS code that will 'listen' for events
+ 
+ • Use multiple input tages/dropdowns for multiple feature selection 
+
+#
 ### Web-Design-Challenge
   In this challenge I show my 'front-end' skills by:
 
