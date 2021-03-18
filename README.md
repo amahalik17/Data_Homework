@@ -153,6 +153,34 @@
  • Use multiple input tages/dropdowns for multiple feature selection 
 
 #
+### D3-Challenge
+  In this challenge I display the creation and maipulation of D3.js plots:
+  
+ • Read in csv data
+  
+ • Create a scatter plot that represents each state with circle elements
+ 
+ • Add click events to scatter plot for more dynamic data visualizations
+ 
+ • Add interaction capabilities to the plots
+
+#
+### Leaflet-Challenge
+  This project demostrates the use of Leaflet.js and displays:
+  
+ • Choose dataset from USGS earthquake website and import
+ 
+ • Create a map using leflet, that plots all earthquakes in my dataset
+ 
+ • Display the data marker size relative to the earthquake's magnitude
+ 
+ • Add [p[ups that provide additional information
+ 
+ • Create a legend 
+ 
+ • Add layer controls
+
+#
 ### Web-Design-Challenge
   In this challenge I show my 'front-end' skills by:
 
