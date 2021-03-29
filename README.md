@@ -86,6 +86,9 @@
 
 #
 ### Matplotlib-Challenge
+
+![laboratory](Matplotlib-Challenge\Pymaceuticals\Images\Laboratory.jpg)
+
   Over the course of 45 days, tumor development was observed and measured. The purpose of this study was to compare the performance of Pymaceuticals' drug of interest, Capomulin, versus the other treatment regimens. I can conclude after careful, and extensive analysis that: Capomulin was productive in reducing the tumor size over a 45 day period. There was a substantial correlation between mouse weight and average tumor volume. Out of the four regimens(Capomulin, Ramicane, Infubinol, and Ceftamin), Infubinol was the only drug with an outlier. To gather this data and form these conclusions, I did the following:
 
 • Gather, clean, and merge data to perform analysis
@@ -112,6 +115,9 @@
 
 #
 ### SQL-Alchemy-Challenge
+
+![precipitation chart](SQL-Alchemy-Challenge\Images\PrecipitationAnalysis.png)
+
   In this challenge, I utilize advanced data storage and retrieval by displaying the following:
 
 •	Connect to a SQL database using SQLAlchemy.
@@ -166,6 +172,9 @@
 
 #
 ### Leaflet-Challenge
+
+![heatmap](Leaflet-Challenge\Leaflet-Step-1\Images\5-Advanced.png)
+
   This project demostrates the use of Leaflet.js and displays:
   
  • Choose dataset from USGS earthquake website and import
@@ -182,6 +191,10 @@
 
 #
 ### Web-Design-Challenge
+
+![comparison charts](Web-Design-Challenge\Images\comparison-sm.png)
+
+
   In this challenge I show my 'front-end' skills by:
 
 •	Read and write HTML, CSS
